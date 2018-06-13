@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>单亲妈妈，不孤单</title>
+		<script>
+			//动态设置像素比
+			var pixelRatio = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+ pixelRatio +',minimum-scale='+ pixelRatio +',maximum-scale='+ pixelRatio +',user-scalable=no" />');
+			//获取html节点
+			var html=document.getElementsByTagName("html")[0];
+			var html2 = document.documentElement;
+			//获取屏幕宽度
+			var pageWidth=html.getBoundingClientRect().width;
+			//屏幕宽度/数值=结果
+			html.style.fontSize=pageWidth/16+"px";
+		</script>
+		<!-- <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0,maximum-scale=1.0"/> -->
+		<!-- <script>!function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(normal,e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=normal?1:1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=normal?"50px": a/2*s*n+"px"},e.exports=t["default"]}]);  flex(false,100, 1);</script> -->
+		<!-- 重置样式，index样式，引入样式 -->
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/liMarquee.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/style.js"></script>
+		<script src="js/jquery.liMarquee.js"></script>
+	</head>
+	<body>
+		<!--锚点链接 -->
+			<a  href="#heartFly" class="baoming">
+				<img src="img/heart2.gif" alt="" class="baomingImg">
+			</a>
+			<!-- 头部和第二部分 -->
+		<div class="bgColor">
+			<img src="img/head.png" alt="" class="comImg">
+		</div>
+		<div class="bgColor">
+			<img src="img/two-pic.png" alt="" class="comImg">
+		</div>
+
+		<!-- 轮播图 -->
+		<div class="sowingParent">
+			<ul class="sowingAll">
+				<li class="sowing">
+					<img src="img/sowing.png" alt="">
+					<img src="img/sowing2.png" alt="">
+					<img src="img/sowing3.png" alt="">
+					<img src="img/sowing4.png" alt="">
+				</li>
+			</ul>
+		</div>
+		<div class="bgColor">
+			<img src="img/wenan01.png" alt="" class="comImg">
+		</div>
+
+		<!-- 案例部分 可以点开详细 -->
+		<div class="bgColor">
+			<div class="case">
+				<img src="img/blackround.png" alt="" class="comImg">
+				<ul class="caseUl">	
+					<li class="anliImg">
+						<img src="img/anli1.png" alt="" class="anliImgChild">
+						<div class="anliFont">
+							<span class="aliSpan">一场意外世上</span>
+							<span class="aliSpan aliSpan2">又多了一个单亲家庭</span>
+							<img src="img/btn2.png" alt="" class="btn2" id="case1Btn">
+						</div>
+					</li><li class="anliImg">
+						<img src="img/anli2.png" alt="" class="anliImgChild">
+						<div class="anliFont">
+							<span class="aliSpan">爸爸可以缺席</span>
+							<span class="aliSpan aliSpan2">但妈妈不会</span>
+							<img src="img/btn2.png" alt="" class="btn2" id="case2Btn">
+						</div>
+					</li><li class="anliImg">
+						<img src="img/anli3.png" alt="" class="anliImgChild">
+						<div class="anliFont">
+							<span class="aliSpan">我未成年</span>
+							<span class="aliSpan aliSpan2">但我已经是一个妈妈了</span>
+							<img src="img/btn2.png" alt="" class="btn2" id="case3Btn">
+						</div>
+					</li>
+				</ul>	
+				<!-- <span class="solidColor"></span> -->
+			</div>
+
+			<!-- 点击展开的详情 -->
+			<div class="case case2" id="content1Case">
+				<div class="sanjiao">
+					<img src="img/sanjiao.png" alt="" class="sanjiaoImg">
+					<span class="sanjiaoFont">点击收起</span>
+				</div>
+				<img src="img/content01.png" alt="" class="comImg contentImg">
+				<div class="sanjiao2">
+					<img src="img/btn3.png" alt="" class="sanjiaoImg">
+					<span class="sanjiaoFont">点击收起</span>
+				</div>
+			</div>
+
+			<div class="case case2" id="content2Case">
+				<div class="content2sanjiao">
+					<img src="img/sanjiao.png" alt="" class="sanjiaoImg">
+					<span class="sanjiaoFont">点击收起</span>
+				</div>
+				<img src="img/content02.png" alt="" class="comImg contentImg">
+				<div class="sanjiao2">
+					<img src="img/btn3.png" alt="" class="sanjiaoImg">
+					<span class="sanjiaoFont">点击收起</span>
+				</div>
+			</div>
+
+			<div class="case case2" id="content3Case">
+				<div class="content3sanjiao">
+					<img src="img/sanjiao.png" alt="" class="sanjiaoImg">
+					<span class="sanjiaoFont">点击收起</span>
+				</div>
+				<img src="img/content03.png" alt="" class="comImg contentImg">
+				<div class="sanjiao2">
+					<img src="img/btn3.png" alt="" class="sanjiaoImg">
+					<span class="sanjiaoFont">点击收起</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- 黑图部分 -->
+		<div class="bgColor">
+				<img src="img/wenan02.png" alt="" class="comImg">
+			</div>
+		<div>
+			<img src="img/yellow.png" alt="" class="comImg">
+			<a name="heartFly">
+		</div>
+		<div class="enlist">
+			<img src="img/enlist.png" alt="" class="comImg">
+		</div>
+		<!-- 填写个人信息部分 -->
+		<div class="ipt">
+			<ul action="" class="iptFrom">
+				<li class="iptLi">
+					<strong class="fontName"><i>* </i>姓名 : &nbsp;</strong>
+					<span>
+						<input type="" class="name username">
+					</span>
+					<span class="must mustName mustmust" style="display:none">(必填)</span>
+				</li>
+				<li class="iptLi">
+					<strong class="fontName"><i>* </i>电话 : &nbsp;</strong>
+					<span>
+						<input type="" class="name tel">
+					</span>
+					<span class="must mustTle mustmust" style="display:none">(必填)</span>
+					<span class="must mustTle2 mustmust" style="display:none">格式不对</span>
+				</li>
+				<li class="iptLi">
+					<strong class="fontName"><i>* </i>所在城市 : &nbsp;</strong>
+					<span>
+						<input type="" class="name city">
+					</span>
+					<span class="must mustCity mustmust" style="display:none">(必填)</span>
+				</li>
+				<li class="iptLi iptLi3">
+					<strong class="fontName">现状自述 : &nbsp;</strong>
+					<span>
+						<textarea type="" class="name name2 content nowContent"></textarea>
+					</span>
+				</li>
+				<li class="iptLi">
+					<strong class="fontName"><i>* </i>职位需求 : &nbsp;</strong>
+					<span>
+						<input type="" class="name workUse">
+					</span>
+					<span class="must mustmust mustUse" style="display:none">(必填)</span>
+				</li>
+				<li class="iptLi iptLi3">
+					<strong class="fontName">技能描述 : &nbsp;</strong>
+					<span>
+						<textarea type="" class="name name2 content skillContent"></textarea>
+					</span>
+				</li>
+				<img src="img/btn.png" alt="" class="btn">
+
+			</ul>
+		</div>
+
+		<!-- 尾部 -->
+		<div class="endImg">
+			<img src="img/bany.png" alt="" class="banYuan">
+			<img src="img/end.png" alt="" class="comImg">
+		</div>
+	<script>
+			// (function(){
+			// 	var html = document.documentElement;
+			// 	var hWidth = html.getBoundingClientRect().width;
+			// 	html.style.fontSize = hWidth/16 + "px";
+			// })()
+			(function (n, e) {
+				var t = n.documentElement, i = "orientationchange" in window ? "orientationchange" : "resize", d = function () {
+					var n = t.clientWidth;
+					n && (t.style.fontSize = n / 15 + "px")
+				};
+				n.addEventListener && (e.addEventListener(i, d, !1), n.addEventListener("DOMContentLoaded", d, !1))
+			})(document, window);
+	</script>
+	</body>
+</html>
