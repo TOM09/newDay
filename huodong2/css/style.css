@@ -10,14 +10,14 @@ body {
 }
 .sowingParent {
   position: relative;
-  height: 5rem;
+  height: 5.3rem;
 }
 .sowingAll {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 110%;
+  height: 110% !important;
   overflow-x: auto;
   white-space: nowrap;
 }
@@ -179,8 +179,9 @@ padding-top: .6rem;
   width: 100%;
   display: block;
   font-size: .46rem;
-  font-weight: normal;
+  font-weight: initial;
   text-align: center;
+  font-family: "微软雅黑",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .btn2{
   width: 50%;
@@ -224,3 +225,11 @@ padding-top: .6rem;
   right: 1.25rem;
   top:-0.05rem;
 }
+.name{
+  color: black;
+  font-weight: normal;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+/*.str_origin{
+	width:100%;
+}*/

@@ -18,7 +18,10 @@ button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 //-webkit-tap-highlight-color:rgba(0,0,0,0);//透明度设置为0，去掉点击链接和文本框对象时默认的灰色半透明覆盖层(iOS)或者虚框(Android) 
-input，textarea{outline:none}  
+input,textarea{
+  outline:none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}  
 //取消chrome下默认的文本框聚焦样式
 
 -webkit-appearance: none;

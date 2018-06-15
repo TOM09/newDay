@@ -1,7 +1,7 @@
 window.onload=function(){
     //横向轮播图
     $(function(){
-        $('.sowingAll').liMarquee(
+        $('.sowingParent').liMarquee(
             {
                 hoverstop:true
             }
@@ -16,14 +16,20 @@ $(".caseUl").click(function(ev){
         case 'case1Btn' :
         $("#content2Case,#content3Case").hide();
           $("#content1Case").show();
+          $(".anliFont2").css("background-color","white");
+          $(".anliFont3,.anliFont4").css("background-color","#f1f1f1");
             break;
         case 'case2Btn' :
         $("#content1Case,#content3Case").hide();
         $("#content2Case").show();
+        $(".anliFont3").css("background-color","white");
+        $(".anliFont2,.anliFont4").css("background-color","#f1f1f1");
             break;
         case 'case3Btn' :
         $("#content2Case,#content1Case").hide();
         $("#content3Case").show();
+        $(".anliFont4").css("background-color","white");
+        $(".anliFont3,.anliFont2").css("background-color","#f1f1f1");
             break;
     }
 })
@@ -66,32 +72,37 @@ $(".sanjiaoFont").click(function(){
         }
     
         //现状自述和职位描述,如果有就填写，没有就写“无”
-        var nowContent = ""; 
-        var skillContent = "";
+        // var nowContent = ""; 
+        // var skillContent = "";
+        let [nowContent,skillContent] = ["",""]
         if($(".nowContent").val().replace(/(^\s*)|(\s*$)/g, "")!=""){
             nowContent = $(".nowContent").val()
-        }else{
-            nowContent = "无"
         }
+        
         if($(".skillContent").val().replace(/(^\s*)|(\s*$)/g, "")!=""){
             skillContent = $(".skillContent").val()
-        }else{
-            skillContent = "无"
         }
-
+        
         var content =  {
             "name":$(".username").val(),
             "tel":$(".tel").val(),
             "city":$(".city").val(),
-            "content":$(".content").val(),
+            "workUse":$(".workUse").val(),
             "youself":nowContent,
             "skill":skillContent
         }
 
+		if( skillContent == ""){
+			delete content.skill
+		}
+		if( nowContent == ""){
+			delete content.youself
+		}
+		
         if(typeof content === "object"){
             content = JSON.stringify(content)
         }
-
+		
         var datas = {};
         datas.activityId = activityId;
         datas.content = content;
