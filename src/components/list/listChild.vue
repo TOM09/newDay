@@ -14,7 +14,6 @@
 .listChild{
   float: left;
   width: 20%;
-  list-style: none;
   display: inline-block;
   position: relative;
 }

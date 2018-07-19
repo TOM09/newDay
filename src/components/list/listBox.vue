@@ -11,9 +11,12 @@
       <listChild></listChild>
       <listChild></listChild>
       <listChild></listChild>
-
+      <listChild></listChild>
+      <listChild></listChild>
+      <listChild></listChild>
+      <listChild></listChild>
+        <li v-for="(item,key) of items">{{item}}</li>
     </ul>
-    
   </div>
 </template>
 
@@ -21,6 +24,15 @@
 import listChild from './listChild'
 export default {
   name: 'listBox',
+  data(){
+    return{
+      items:[
+          {text:"第一组"},
+          {text:"第二组"},
+          {text:"第三组"},
+          ]
+        }
+},
   components: {
     listChild
   }
@@ -31,7 +43,6 @@ export default {
 <style scoped>
 .listFather{
   height: 314px;
-  margin: 0;
   padding: 0 48px;
   display: flex;
   flex-wrap:wrap;
@@ -45,7 +56,6 @@ export default {
 .h1Font{
   font-size: 32px;
   margin-left: -15px;
-  margin: 0;
   line-height: 98px;
   color: #333;
 }
