@@ -1,15 +1,24 @@
 import Vue from 'vue'
+import axios from 'axios'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Index from '@/components/Index'
+import design from '@/components/design'
 
 Vue.use(Router)
+Vue.prototype.axios= axios
 
 export default new Router({
-  // routes: [
-  //   {
-  //     path: '/',
-  //     name: 'HelloWorld',
-  //     component: HelloWorld
-  //   }
-  // ]
+	mode:'history',
+     routes:[
+       {
+         path: '/',
+         name: 'Index',
+         component: Index
+       },
+       {
+         path: '/design',
+         name: 'design',
+         component: design
+       }
+     ]
 })
