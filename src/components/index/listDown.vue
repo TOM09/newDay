@@ -1,5 +1,4 @@
 <template>
-		
   	 <div v-if="isLoadingDone" v-for="(item, index) in resultList">
     <div v-if="index % 2 === 0" class="title-container">
       <image class="title-image" :src="blueNav" />
@@ -42,8 +41,51 @@
 
 <script>
 	export default {
-		
-		
+    name: 'IndexDown',
+    data: function() {
+      return {
+        resultList: [],
+        baseUrl: baseUrl   
+      }
+    },
+    
+    methods: {
+			getInfo() {
+				let obj = {
+          productMasterpiece: this.axios.get(this.baseUrl+'/masterpiece'),
+				productOne: this.axios.get(this.baseUrl+'/product-type'),
+					productTwo: this.axios.get(this.baseUrl+'/product-type-group?id='+this.urlId),
+					productThree: this.axios.get(this.baseUrl+'/case?productGroupId='+this.urlId)
+				}
+				return obj
+			}
+    },
+
+    created: function() {
+			this.axios.all([this.getInfo().productMasterpiece,this.getInfo().productOne, this.getInfo().productTwo,this.getInfo().productThree])
+				.then(this.axios.spread((acct, perms, res) => {
+					for(var item of acct.data.data) {
+						if(item.groupid == "857c6760189b4ced977a103b651b6bf7" && item.delFlag == false && item.status == true) {
+							this.productData.push(item)
+						}
+					}
+					this.nonStandardList = perms.data.data[0].data.nonStandard.split(',')
+					
+					const resData = res.data.data;
+					this.caseList = []
+					resData.forEach((item, index) => {
+						if (!item.delFlag && item.status) {
+				              this.caseList.push(item)
+				            if (index + 1 === resData.length) {
+				              this.caseList.sort((a, b) => {
+				                if (a.sort === b.sort) return b.createDate - a.createDate
+				                return a.sort - b.sort
+				              })
+				            }
+				        }
+					})
+				}));
+		}
 	}
 </script>
 

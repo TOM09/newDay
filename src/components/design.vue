@@ -1,11 +1,11 @@
 <template>
 	<div id="design">
-		<div class="shadowSpace">平面设计</div>
+		<topLogo :urlname = "urlname"/>
 		<div class="container">
 			<!-- <div class="shadowSpace" /> -->
 			<div class="title-container">
 				<img class="title-image" :src="titleImage" />
-				<span class="title-text">选择平面设计类型</span>
+				<span class="title-text">选择{{urlname}}类型</span>
 			</div>
 			<div class="type-container">
 				<div class="sub-type-container" v-for="(item, index) in productData">
@@ -31,14 +31,11 @@
 		</div>
 		<div class="shadowSpace" />
 
-
-
 		<div>
 		    <div class="title-container-detail">
 		      <img class="title-image" :src="titleImage" />
-		      <span class="title-text">优秀平面设计</span>
+		      <span class="title-text">优秀{{urlname}}</span>
 		    </div>
-		    
 		    
 		    <div v-for="(item, index) in caseList">
 		      <div class="great-brand-detail-container">
@@ -66,27 +63,34 @@
 </template>
 
 <script>
-	import {
-		imageUrls
-	} from '../lib/constants'
+import topLogo from './design/topLogo'
+import {
+	baseUrl,
+	imageUrls
+} from '../lib/constants'
+
+
 	export default {
 		data() {
 			return {
 				titleImage: imageUrls.navigation.title,
 				preview: imageUrls.navigation.preview,
 				praise: imageUrls.navigation.praise,
+				baseUrl: baseUrl,
 				productData: [],
 				nonStandardList: [],
-				caseList:[]
+				caseList:[],
+				urlId:this.$utils.getUrlKey('id'),
+				urlname:this.$utils.getUrlKey('name')
 			}
 		},
 		
 		methods: {
 			getInfo() {
 				let obj = {
-					productOne: this.axios.get('http://120.27.135.162/qcbang-rest/product-type'),
-					productTwo: this.axios.get('http://qcbang.hz.taeapp.com/product-type-group?id=857c6760189b4ced977a103b651b6bf7'),
-					productThree: this.axios.get('http://120.27.135.162/qcbang-rest/case?productGroupId=857c6760189b4ced977a103b651b6bf7')
+					productOne: this.axios.get(this.baseUrl+'/product-type'),
+					productTwo: this.axios.get(this.baseUrl+'/product-type-group?id='+this.urlId),
+					productThree: this.axios.get(this.baseUrl+'/case?productGroupId='+this.urlId)
 				}
 				return obj
 			}
@@ -96,7 +100,7 @@
 			this.axios.all([this.getInfo().productOne, this.getInfo().productTwo,this.getInfo().productThree])
 				.then(this.axios.spread((acct, perms, res) => {
 					for(var item of acct.data.data) {
-						if(item.groupid == "857c6760189b4ced977a103b651b6bf7" && item.delFlag == false && item.status == true) {
+						if(item.groupid == this.urlId && item.delFlag == false && item.status == true) {
 							this.productData.push(item)
 						}
 					}
@@ -117,7 +121,9 @@
 					})
 				}));
 		},
-		
+  		components:{
+			'topLogo':topLogo,
+		},
 		computed: {
 			classObject: function() {
 				return 750 / (this.nonStandardList.length % 4)
@@ -160,6 +166,8 @@
 	
 	.container {
 		display: flex;
+		/* margin-top: 100px; */
+		padding-top: 100px; 
 		flex-direction: column;
 		width: 750px;
 		background-color: white;
@@ -216,6 +224,16 @@
 		background-color: #f6f6f6;
 		width: 750px;
 		height: 20px;
+	}
+
+	.shadowSpaceTop {
+		display: fixed;
+		background-color: #f6f6f6;
+		width: 750px;
+		height: 100px;
+		font-size: 36px;
+		text-align: center;
+		line-height: 100px;
 	}
 	
 	.service {

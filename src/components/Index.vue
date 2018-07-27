@@ -1,21 +1,13 @@
 <template>
-  <div id="app">
-
-    <div class="banner">
+  <div class="wrapper">
+    <topLogo/>
+    
+    
+    <div class="banner" style="{ background: url(../../build/logo.png)}">
       <img :src="bannerOne"/>
     </div>
     
   	<listIcon/>
-  	
-    <div class="shadowSpace" />
-
-		<vueswiper/>
-	  
-	  <div class="shadowSpace" />
-		<!--<div v-if="isLoadingDone" class="adImage">
-	    <img :src="newActiveBanner" />
-	    <img :src="activeBanner" />
-  	</div>-->
 
   </div>
 </template>
@@ -23,7 +15,7 @@
 <script>
 //import slider from 'vue-concise-slider'
 import listIcon from './index/listicon'
-import vueswiper from './index/vueswiper'
+import topLogo from './index/topLogo'
 import {CacheUtil} from '../lib/util2'
 import {
   imageUrls,
@@ -33,7 +25,6 @@ import {
   isIphoneX
 } from '../lib/constants'
 
-console.log(imageUrls.banner.bannerOne)
 export default {
   name: 'Index',
   data: function() {
@@ -61,7 +52,6 @@ export default {
     }).then((response) => {
     	  return response.json()
     }).then((response)=>{
-    	console.log(response)
       this.masterList = []
       response.data.forEach((item, index) => {
 //          this.masterList.push(JSON.parse(item))
@@ -153,12 +143,20 @@ export default {
   },
   components:{
     'listIcon':listIcon,
-    'vueswiper':vueswiper
+    'topLogo':topLogo
   }
 }
 </script>
 
 <style scoped>
+	.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 750px;
+  justify-content: space-between;
+  height: 1218px;
+  padding-bottom: 118px;
+}
 .slider-item{
 	margin: 0;
 	background-repeat:no-repeat;
@@ -168,9 +166,10 @@ export default {
 }
  
 .banner{
+  padding-top: 60px; 
   width: 100%;
   height: 340px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 .shadowSpace {
   background-color: #f6f6f6;
